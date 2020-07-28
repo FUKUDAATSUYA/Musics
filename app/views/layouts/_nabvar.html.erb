@@ -1,0 +1,62 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav class="navbar navbar-nav navbar-left">
+      <span class="navbar-brand">Musics</span>
+    </nav>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to user_path(current_user) do %>
+              <i class="fas fa-home"></i>
+              HOME
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to users_path do %>
+              <i class="fas fa-users"></i>
+              Users
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to musics_path do %>
+              <i class="fas fa-book"></i>
+              Musics
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt"></i>
+              logout
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to root_path do %>
+              <i class="fas fa-home"></i>
+              HOME
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to home_about_path do %>
+              <i class="fas fa-door-open"></i>
+              About
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_user_registration_path do %>
+              <i class="fas fa-user-plus"></i>
+              sign up
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_user_session_path do %>
+              <i class="fas fa-sign-in-alt"></i>
+              login
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

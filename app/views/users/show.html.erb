@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-xs-3">
+    <%= render partial: 'layouts/user_profile', locals: { user: @user } %>
+    <%= render 'layouts/new_music' %>
+  </div>
+  <div class="col-xs-9">
+    <h2>Musics</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-xs-3"></th>
+          <th class="col-xs-3">Title</th>
+          <th class="col-xs-4">Opinion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @musics.each do |music| %>
+          <tr>
+            <td>
+              <%= link_to user_path(music.user) do %>
+   
+              <% end %>
+            </td>
+            <td><%= link_to music.title, music_path(music.id) %></td>
+            <td><%= music.body %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
