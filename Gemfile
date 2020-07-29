@@ -72,4 +72,5 @@ gem 'ruby-debug-ide'
 
 gem 'dotenv-rails'
 group :production do
+  gem 'mysql2'
 end
