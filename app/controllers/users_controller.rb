@@ -17,12 +17,21 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        
       else
         format.html { render :edit }
-        
       end
     end
+  end
+  def withdrawl
+    @user = current_user
+
+  end
+  
+  def destroy
+    @user = current_user
+    @user.destroy
+    flash[:notice] = "退会しました"
+    redirect_to root_path
   end
 
   private

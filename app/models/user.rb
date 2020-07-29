@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
  has_many :musics, dependent: :destroy
+ attachment :profile_image
 
 end

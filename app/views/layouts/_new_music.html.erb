@@ -2,14 +2,14 @@
 <% music = Music.new %>
 <%= form_with model: music do |f| %>
   <div class="field row">
-    <%= f.label :title, "Title"%>
+    <%= f.label :title, "曲名"%>
     <%= f.text_field :title, class: "col-xs-12"%><br>
   </div>
   <div class="field row">
-    <%= f.label :body, "Opinion" %>
+    <%= f.label :body, "感想" %>
     <%= f.text_area :body, class: "col-xs-12" %><br>
   </div>
   <div class="actions row">
-    <%= f.submit "Create Music", class: "col-xs-12 btn btn-primary" %>
+    <%= f.submit "投稿", class: "col-xs-12 btn btn-primary" %>
   </div>
 <% end %>

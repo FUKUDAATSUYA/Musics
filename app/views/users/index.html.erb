@@ -16,6 +16,7 @@
       <tbody>
         <% @users.each do |model| %>
           <tr>
+            <td><%= attachment_image_tag model, :profile_image, :fill, 80, 80, fallback: "no_image.jpg" %></td>
             <td><%= model.name %></td>
             <td><%= link_to 'Show', model %></td>
           </tr>

@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
  root to: 'home#index'
-  devise_for :users, controllers: {
-    registrations: 'users/registrations',
-    sessions: 'users/sessions'
-  }
+  devise_for :users
 
-  resources :users, only: %i[index show edit update]
+
+  get 'users/withdrawal' => 'users#withdrawal'
+  resources :users, only: %i[index show edit update destroy]
   resources :home, only: %i[index]
   get 'home/about' => 'home#about'
   resources :musics, only: %i[index show create edit update destroy]

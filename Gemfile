@@ -64,3 +64,12 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.12.0'
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+gem 'paranoia'
+gem 'debase'
+gem 'ruby-debug-ide'
+
+gem 'dotenv-rails'
+group :production do
+end

@@ -14,7 +14,7 @@
     <%= render 'layouts/new_music' %>
   </div>
   <div class="col-xs-9">
-    <h2>Books</h2>
+    <h2>Musics</h2>
     <table class="table">
       <thead>
         <tr>
@@ -28,7 +28,8 @@
           <tr>
             <td>
               <%= link_to user_path(music.user.id) do %>
-              
+               <%= attachment_image_tag music.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg" %>
+
               <% end %>
             </td>
             <td><%= link_to music.title, music %></td>
