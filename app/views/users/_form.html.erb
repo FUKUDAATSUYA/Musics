@@ -1,23 +1,23 @@
 <%= form_for(user) do |f| %>
 
   <div class="field row">
-    <%= f.label :name %>
+    <%= f.label :名前 %>
     <%= f.text_field :name, autofocus: true, class: "col-xs-12 name" %>
   </div>
 
   <div class="field row">
-    <%= f.label :image %>
+    <%= f.label :プロフィール画像 %>
     <%= f.attachment_field :profile_image, class: "col-xs-12 user_image" %>
   </div>
 
   <div class="field row">
-    <%= f.label :introduction %>
+    <%= f.label :自己紹介 %>
     <%= f.text_area :introduction, class: "col-xs-12 introduction" %>
   </div>
 
 
   <div class="actions row">
-    <%= f.submit class: "btn btn-primary col-xs-12" %>
+    <%= f.submit "更新",class: "btn btn-primary col-xs-12" %>
   </div>
 
 <% end %>

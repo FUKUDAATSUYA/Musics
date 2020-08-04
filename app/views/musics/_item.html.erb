@@ -16,6 +16,6 @@
 <td>コメント数 : <span id="music_comments_count"><%= music.music_comments.count %></span></td>
 
 <% if music.user_id == current_user.id %>
-  <td class="edit_music"><%= link_to "Edit",edit_music_path(music), class: "btn-sm btn-success edit_music_#{music.id}" %></td>
-  <td class="destroy_music"><%= link_to "Destroy",music, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_music_#{music.id}" %></td>
+  <td class="edit_music"><%= link_to "編集",edit_music_path(music), class: "btn-sm btn-success edit_music_#{music.id}" %></td>
+  <td class="destroy_music"><%= link_to "削除",music, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_music_#{music.id}" %></td>
 <% end %>

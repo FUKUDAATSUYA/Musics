@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-xs-3">
-    <h2>User info</h2>
+    <h2>プロフィール</h2>
     <%= render 'users/profile' %>
 
-    <h2>New music</h2>
+    <h2>投稿</h2>
     <%= render 'musics/form' %>
   </div>
 
@@ -44,8 +44,8 @@
     <div class="row">
       <%= form_with model: [@music, @music_comment], remote: true do |f| %>
         <%= f.text_area :content, class: "col-xs-10",id: "music_comment_content" %>
-        <%= f.submit '送信' %>
-      <% end %>
-    </div>
+        <%= f.submit '送信',class: "btn btn-primary col-xs-12" %>
+    <% end %>
+    <div>
 
 

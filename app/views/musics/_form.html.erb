@@ -2,17 +2,17 @@
 <%= form_for(music) do |f| %>
 
   <div class="field row">
-    <%= f.label :title %>
+    <%= f.label :曲名 %>
     <%= f.text_field :title, class: "col-xs-12 music_title" %>
   </div>
 
   <div class="field row">
-    <%= f.label :body %>
+    <%= f.label :感想 %>
     <%= f.text_area :body, class: "col-xs-12 music_body" %>
   </div>
 
   <div class="actions row">
-    <%= f.submit class: "btn btn-primary col-xs-12" %>
+    <%= f.submit "投稿",class: "btn btn-primary col-xs-12" %>
   </div>
 
 <% end %>

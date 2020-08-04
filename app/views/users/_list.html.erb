@@ -18,7 +18,7 @@
           <td><p>フォロー数 : <%= link_to user.followings.count, user_followings_path(user) %></p></td>
           <td><p>フォロワー数 : <%= link_to user.followers.count, user_followers_path(user) %></p></td>
           <td><%= render 'relationships/follow_button', user: user %></td>
-          <td><%= link_to "Show", user, class: "user_#{user.id}" %></td>
+          <td><%= link_to "ユーザページ", user, class: "user_#{user.id}" %></td>
         </tr>
         <% end %>
     </tbody>
