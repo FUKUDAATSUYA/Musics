@@ -1,0 +1,21 @@
+<td>
+  <%= link_to(music.user) do %>
+    <%= attachment_image_tag(music.user, :profile_image, :fill, 80, 80, fallback: "no-image-mini.jpg") %><br>
+    <span class="user_name"><%= music.user.name %></span>
+  <% end %>
+</td>
+
+<td><%= link_to music.title, music, class: "music_#{music.id}" %></td>
+
+<td><%= music.body %></td>
+
+<td>
+  <%= render 'favorites/favorite_button', music: music %>
+</td>
+
+<td>コメント数 : <span id="music_comments_count"><%= music.music_comments.count %></span></td>
+
+<% if music.user_id == current_user.id %>
+  <td class="edit_music"><%= link_to "Edit",edit_music_path(music), class: "btn-sm btn-success edit_music_#{music.id}" %></td>
+  <td class="destroy_music"><%= link_to "Destroy",music, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_music_#{music.id}" %></td>
+<% end %>

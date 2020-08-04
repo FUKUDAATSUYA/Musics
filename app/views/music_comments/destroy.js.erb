@@ -1,0 +1,2 @@
+$("#comment_list").html("<%= j(render 'music_comments/comments', music_comments: @music_comments) %>");
+$("#music_comments_count").text(<%= @music_comments.count %>);

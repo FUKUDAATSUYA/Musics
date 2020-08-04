@@ -1,0 +1,10 @@
+<% if current_user.already_favorite?(music) %>
+  <%= link_to music_favorites_path(music), method: :delete, remote: true do %>
+    <i class="glyphicon glyphicon-heart"></i>
+  <% end %>
+<% else %>
+  <%= link_to music_favorites_path(music), method: :post, remote: true do %>
+    <i class="glyphicon glyphicon-heart-empty"></i>
+  <% end %>
+<% end %>
+<%= music.favorites.count %>

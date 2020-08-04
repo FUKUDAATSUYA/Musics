@@ -1,34 +1,18 @@
-<%= form_with(model: music, local: true) do |form| %>
-  <% if music.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(music.errors.count, "error") %> prohibited this music from being saved:</h2>
-
-      <ul>
-      <% music.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<% music = Music.new if music.nil?  %>
+<%= form_for(music) do |f| %>
 
   <div class="field row">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "col-xs-12" %>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "col-xs-12 music_title" %>
   </div>
 
   <div class="field row">
-    <%= form.label :body, "Opinion" %>
-    <%= form.text_area :body, class: "col-xs-12" %>
+    <%= f.label :body %>
+    <%= f.text_area :body, class: "col-xs-12 music_body" %>
   </div>
-
-<!--
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
--->
 
   <div class="actions row">
-    <%= form.submit "更新", class: "btn btn-primary" %>
+    <%= f.submit class: "btn btn-primary col-xs-12" %>
   </div>
+
 <% end %>

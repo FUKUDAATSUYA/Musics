@@ -1,13 +1,26 @@
 Rails.application.routes.draw do
- root to: 'home#index'
   devise_for :users
+  resources :users, only: [:show, :index, :edit, :update] do
+    resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+    resource :rooms, :only => [:create]
+  end
+  resources :musics, only: [:index, :show, :edit, :create, :update, :destroy] do
+    resource :favorites, only: [:create, :destroy]
+    resource :music_comments, only: [:create]
+  end
+  resources :music_comments, only: [:destroy]
 
+  resources :rooms, :only => [:show] do
+    resources :chats, :only => [:create]
+  end
 
-  get 'users/withdrawal' => 'users#withdrawal'
-  resources :users, only: %i[index show edit update destroy]
-  resources :home, only: %i[index]
-  get 'home/about' => 'home#about'
-  resources :musics, only: %i[index show create edit update destroy]
+  root 'home#top'
+  get 'home/about'
+  get 'searches/search', as: 'search'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end

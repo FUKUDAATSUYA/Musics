@@ -1,27 +1,16 @@
 <div class="row">
   <div class="col-xs-3">
-    <%= render 'layouts/user_profile' %>
-    <%= render 'layouts/new_music' %>
+    <h2>User info</h2>
+    <%= render 'users/profile' %>
+
+    <h2>New Music</h2>
+    <%= render 'musics/form' %>
   </div>
+
   <div class="col-xs-9">
-    <h2>Users</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="col-xs-4">image</th>
-          <th class="col-xs-4">name</th>
-          <th class="col-xs-2"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |model| %>
-          <tr>
-            <td><%= attachment_image_tag model, :profile_image, :fill, 80, 80, fallback: "no_image.jpg" %></td>
-            <td><%= model.name %></td>
-            <td><%= link_to 'Show', model %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%# アクションが #index なら "Users" それ以外は "アクション名" %>
+    <h2><%= params[:action] == "index" ? "Users" : params[:action] %></h2>
+
+    <%= render 'users/list', users: @users %>
   </div>
 </div>

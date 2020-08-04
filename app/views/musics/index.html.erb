@@ -1,42 +1,14 @@
-<% if flash[:errors] %>
-  <div id="error_explanation">
-    <h2><%= pluralize(flash[:errors].count, "error") %> prohibited this music from being saved:</h2>
-    <ul>
-      <% flash[:errors].each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
 <div class="row">
   <div class="col-xs-3">
-    <%= render 'layouts/user_profile' %>
-    <%= render 'layouts/new_music' %>
-  </div>
-  <div class="col-xs-9">
-    <h2>Musics</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="col-xs-3"></th>
-          <th class="col-xs-3">Title</th>
-          <th class="col-xs-4">Opinion</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @musics.each do |music| %>
-          <tr>
-            <td>
-              <%= link_to user_path(music.user.id) do %>
-               <%= attachment_image_tag music.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg" %>
+    <h2>User info</h2>
+    <%= render 'users/profile' %>
 
-              <% end %>
-            </td>
-            <td><%= link_to music.title, music %></td>
-            <td><%= music.body %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <h2>New music</h2>
+    <%= render 'musics/form' %>
+  </div>
+
+  <div class="col-xs-9" id="music_list">
+    <h2>Musics index</h2>
+    <%= render 'musics/list', musics: @musics %>
   </div>
 </div>

@@ -1,32 +1,17 @@
 <div class="row">
   <div class="col-xs-3">
-    <%= render partial: 'layouts/user_profile', locals: { user: @user } %>
-    <%= render 'layouts/new_music' %>
+    <h2>User info</h2>
+    <%= render 'users/profile', user: @user %>
+
+  <% unless @user.id == current_user.id %>
+    <%= render 'rooms/enter', room: @room, user: @user %>
+  <% end %>
+
+    <h2>New music</h2>
+    <%= render 'musics/form' %>
   </div>
-  <div class="col-xs-9">
-    <h2>Musics</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="col-xs-3"></th>
-          <th class="col-xs-3">曲名</th>
-          <th class="col-xs-4">感想</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @musics.each do |music| %>
-          <tr>
-            <td>
-              <%= link_to user_path(music.user) do %>
-               <%= attachment_image_tag music.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg" %>
-   
-              <% end %>
-            </td>
-            <td><%= link_to music.title, music_path(music.id) %></td>
-            <td><%= music.body %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+
+  <div class="col-xs-9" id="music_list_user">
+    <h2>Music</h2>
+      <%= render 'musics/list', musics: @musics %>
   </div>
-</div>

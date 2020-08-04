@@ -1,39 +1,51 @@
 <div class="row">
   <div class="col-xs-3">
-    <%= render partial: 'layouts/user_profile', locals: { user: @music.user } %>
-    <%= render 'layouts/new_music' %>
-  </div>
-  <div class="col-xs-9">
-    <h2>music detail</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="col-xs-2">User</th>
-          <th class="col-xs-3">曲名</th>
-          <th class="col-xs-5">感想</th>
-          <% if @music.user.id == current_user.id %>
-            <th></th>
-            <th></th>
-          <% end %>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <%= link_to user_path(@music.user.id) do %>
-            <%= attachment_image_tag @music.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg" %><br>
+    <h2>User info</h2>
+    <%= render 'users/profile' %>
 
-              <%= @music.user.name %>
-            <% end %>
-          </td>
-          <td><%= link_to @music.title, music_path(@music) %></td>
-          <td><%= @music.body %></td>
-          <% if @music.user.id == current_user.id %>
-            <th><%= link_to "編集", edit_music_path(@music.id), class: "btn btn-info" %></th>
-            <th><%= link_to "削除", music_path(@music.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %></th>
-          <% end %>
+    <h2>New music</h2>
+    <%= render 'musics/form' %>
+  </div>
+
+  <div class="col-xs-9" id="music_detail">
+    <h2>Music detail</h2>
+    <table class="table table-hover table-inverse">
+      <tbody>
+        <tr id="music_<%= @music.id %>">
+          <%= render 'musics/item', music: @music %>
+           </tr>
+      </tbody>
+    </table>
+
+          <% if current_user.already_favorite?(@music) %>
+<li>
+  <%= link_to music_favorites_path(@music), method: :delete do %>
+    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+    <%= @music.favorites.count %> いいね
+  <% end %>
+</li>
+<% else %>
+<li>
+  <%= link_to music_favorites_path(@music), method: :post do %>
+    <i class="fa fa-heart-o" aria-hidden="true"></i>
+    <%= @music.favorites.count %> いいね
+  <% end %>
+</li>
+<% end %>
         </tr>
       </tbody>
     </table>
-  </div>
-</div>
+
+    <h3>コメント</h3>
+    <table class="table" id="comment_list">
+      <%= render 'music_comments/comments', music_comments: @music_comments %>
+    </table>
+
+    <div class="row">
+      <%= form_with model: [@music, @music_comment], remote: true do |f| %>
+        <%= f.text_area :content, class: "col-xs-10",id: "music_comment_content" %>
+        <%= f.submit '送信' %>
+      <% end %>
+    </div>
+
+
