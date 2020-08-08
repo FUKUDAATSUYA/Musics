@@ -7,6 +7,11 @@ class MusicCommentsController < ApplicationController
     unless music_comment.save
       flash[:danger] = music_comment.errors
       redirect_back fallback_location: root_path
+       #通知の作成
+      @music_comment.create_notification_comment!(current_user, @music_comment.id)
+      
+      #投稿に紐づいたコメントを作成
+    @music_comment = @music.comments.build(music_comment_params)
     end
     @music_comments = Music.find(params[:music_id]).music_comments
   end

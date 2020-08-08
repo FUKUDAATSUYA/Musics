@@ -4,6 +4,8 @@ class RelationshipsController < ApplicationController
   def create
     current_user.follow(@user)
     redirect_back fallback_location: root_url
+    #通知の作成
+      @user.create_notification_follow!(current_user)
   end
 
   def destroy

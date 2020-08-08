@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :chats, :only => [:create]
   end
 
+  resources :notifications, only: [:index, :destroy]
+
   root 'home#top'
   get 'home/about'
   get 'searches/search', as: 'search'

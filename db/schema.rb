@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_04_073050) do
+ActiveRecord::Schema.define(version: 2020_08_04_232200) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "user_id"
@@ -20,11 +20,6 @@ ActiveRecord::Schema.define(version: 2020_08_04_073050) do
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_chats_on_room_id"
     t.index ["user_id"], name: "index_chats_on_user_id"
-  end
-
-  create_table "favolites", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -50,6 +45,21 @@ ActiveRecord::Schema.define(version: 2020_08_04_073050) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "music_id"
+    t.integer "music_comment_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["music_comment_id"], name: "index_notifications_on_music_comment_id"
+    t.index ["music_id"], name: "index_notifications_on_music_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
   create_table "relationships", force: :cascade do |t|
