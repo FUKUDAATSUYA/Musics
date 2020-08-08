@@ -21,6 +21,15 @@
 			<th>フォロワー</th>
 			<th><%= link_to user.followers.count, user_followers_path(user) %></th>
 		</tr>
+
+		<tr>
+			<th><% if unchecked_notifications.any? %>
+    <i class="fa fa-circle" style="color: gold;"></i>
+<% end %>
+<li>
+    <%= link_to "通知", notifications_path, class: "btn-default" %></th>
+			 <th></th>
+		</tr>
 </table>
 
 <div class="row">
