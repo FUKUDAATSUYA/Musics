@@ -18,6 +18,43 @@
 @import 'font-awesome-sprockets';
 @import "font-awesome";
 
+header {
+	color:white;
+}
+
+header .navbar-left span {
+	font-size: 20px;
+	padding-top: 10px;
+}
+
 body {
-  padding-top: 51px;
+	margin-top: 60px;
+}
+
+.actions {
+	margin-top:10px;
+}
+
+#book_list {
+	.edit_book {
+		display: none;
+	}
+	.destroy_book {
+		display: none;
+	}
+}
+#book_list_user {
+	.user_name {
+		display: none;
+	}
+}
+
+
+#chats {
+	.my_chat {
+		text-align: right;
+	}
+	.others_chat {
+		text-align: left;
+	}
 }

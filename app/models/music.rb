@@ -29,7 +29,7 @@ class Music < ApplicationRecord
     save_notification_comment!(current_user, music_comment_id, user_id) if temp_ids.blank?
   end
 
-  def save_notification_music_comment!(current_user, music_comment_id, visited_id)
+  def save_notification_comment!(current_user, music_comment_id, visited_id)
     # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
     notification = current_user.active_notifications.new(
       music_id: id,

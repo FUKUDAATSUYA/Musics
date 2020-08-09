@@ -14,7 +14,7 @@
 
       <td>
         <% if music_comment.user_id == current_user.id %>
-          <%= link_to "Destroy", music_comment_path(music_comment), method: :delete, remote: true, class: "btn-sm btn-danger" %>
+          <%= link_to "削除", music_comment_path(music_comment), method: :delete, remote: true, class: "btn-sm btn-danger" %>
         <% end %>
       </td>
     </tr>
