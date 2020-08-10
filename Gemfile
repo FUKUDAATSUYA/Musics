@@ -86,3 +86,6 @@ gem 'jp_prefecture'
 gem 'geocoder'
 gem "dotenv-rails"
 gem 'whenever', :require => false
+group :development, :test do
+  gem 'rspec-rails', '~> 3.6'
+end

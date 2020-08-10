@@ -1,11 +1,16 @@
+<!doctype html>
+<html>
+<body>
+</body>
+</html>
 <div class="row">
   <div class="top-message col-md-offset-3 col-md-6">
     <h1>
       好きな音楽を共有しよう！
-    </h1>
-    <p>In <strong>Musics</strong></i>,</p>
-    <p>you can share and exchange your opinions , impressions , and emotions</p>
-    <p>about various musics! :)</p>
+    </h1><br>
+    <h3>自分の好きな音楽の感想を投稿するサイトです<h3><br>
+      <h3>共通の音楽好きの仲間と繋がろう<h3><br>
+
     <div class="row">
       <% if user_signed_in? %>
       <%= link_to "ログイン", user_path(current_user.id), class: "btn btn-primary col-xs-offset-1 col-xs-4" %>

@@ -1,7 +1,7 @@
 <% if room %>
   <div class="row">
-    <%= link_to 'enter chat room', room_path(room) %>
+    <%= link_to 'enter chat room', room_path(room), class: "btn btn-primary col-xs-12" %>
   </div>
 <% else %>
-  <%= link_to 'create chat room', user_rooms_path(user), method: :post %>
+  <%= link_to 'create chat room', user_rooms_path(user), method: :post, class: "btn btn-primary col-xs-12" %>
 <% end %>

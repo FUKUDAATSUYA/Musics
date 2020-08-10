@@ -3,7 +3,7 @@
   <div class="col-xs-3">
     <h2>プロフィール</h2>
     <%= render 'users/profile', user: @user %>
-
+    <br>
   <% unless @user.id == current_user.id %>
     <%= render 'rooms/enter', room: @room, user: @user %>
   <% end %>
@@ -13,6 +13,6 @@
   </div>
 
   <div class="col-xs-9" id="music_list_user">
-    <h2>Music</h2>
+    <h2>Musics</h2>
       <%= render 'musics/list', musics: @musics %>
   </div>
