@@ -6,7 +6,7 @@ before_action :authenticate_user!
     @music.favorites.create(user_id: current_user.id)
     redirect_back(fallback_location: root_path)
    #通知の作成
-      @music.create_notification_by(current_user)
+    @music.create_notification_by(current_user)
   end
 
   def destroy
