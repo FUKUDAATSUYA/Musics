@@ -3,16 +3,16 @@ class MusicCommentsController < ApplicationController
   before_action :ensure_correct_user, only: %i(destroy)
 
   def create
-    music_comment = current_user.music_comments.new(music_comment_params)
-    unless music_comment.save
-      flash[:danger] = music_comment.errors
-      redirect_back fallback_location: root_path
-      #投稿に紐づいたコメントを作成
-    @music_comment = @music.comments.build(music_comment_params)
-    #通知の作成
-      @music_comment.create_notification_comment!(current_user, @music_comment.id)
-    end
+    @music_comment = current_user.music_comments.new(music_comment_params)
     @music_comments = Music.find(params[:music_id]).music_comments
+    unless @music_comment.save
+      flash[:danger] = @music_comment.errors
+      redirect_back fallback_location: root_path
+    end
+    #@music_comment = @music.comments.build(music_comment_params)
+
+    #通知の作成
+    @music_comment.create_notification_comment!(current_user, @music_comment.id)
   end
 
   def destroy
